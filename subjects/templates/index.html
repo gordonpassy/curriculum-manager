@@ -1,10 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 <div class="uk-section uk-section-default">
+    {% for subject_item in subjects %}
+     <a href="{% url 'mysubjects' subject_item.id %}">
+         <h1 style="font-family: 'Permanent Marker', cursive;">{{subject_item.name}}</h1>
+         <h3>{{subject_item.chapter}}</h3>
+         <h5>{{subject_item.topic}}............page:{{subject_item.page}}</h5>
+         <p>{{subject_item.content}}</p>
 
-    {% for subject_item in subject %}
-     <a href="{% url 'myimage' subject_item.id %}">
-         <p style="font-family: 'Permanent Marker', cursive;">{{subject_item.name}}</p>
-                {% endfor %}
+         {% endfor %}
 </div>
 
 {% endblock %}

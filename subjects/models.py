@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Chapter(models.Model):
-    number = models.IntegerField()
+    number = models.PositiveIntegerField()
 
-    def __str__(self):
-        return self.name
+    def __int__(self):
+        return self.number
 
     def save_chapter(self):
         self.save()
@@ -16,10 +16,10 @@ class Chapter(models.Model):
         self.delete()
 
 class Page(models.Model):
-    number = models.IntegerField()
+    number = models.PositiveIntegerField()
 
-    def __str__(self):
-        return self.name
+    def int(self):
+        return self.number
 
     def save_page(self):
         self.save()
@@ -41,9 +41,10 @@ class Users(models.Model):
 
 class Subject(models.Model):
     name = models.CharField(max_length=30)
-    content = models.TextField()
     chapter = models.ForeignKey(Chapter)
+    topic = models.CharField(max_length=30,null=True)
     page = models.ForeignKey(Page)
+    content = models.TextField()
     time_uloaded = models.DateTimeField(auto_now_add=True, null=True)
 
     def save_subject(self):
